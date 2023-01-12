@@ -1,7 +1,9 @@
+import Layout from '../components/template/Layout';
+
 export default function Home() {
   return (
-    <h1 className="bg-gradient-to-r from-green-500 to-blue-500">
-      Hello world!
-    </h1>
-  )
+    <Layout titulo="Página Inicial" subtitulo="Em construção">
+      <h3>Conteúdo!!!</h3>
+    </Layout>
+  );
 }
