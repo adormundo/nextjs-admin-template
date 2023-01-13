@@ -5,7 +5,7 @@ interface CabecalhoProps {
   subtitulo: string;
 }
 
-export default function Layout(props: CabecalhoProps) {
+export default function Cabecalho(props: CabecalhoProps) {
   return (
     <div>
       <Titulo titulo={props.titulo} subtitulo={props.subtitulo} />
