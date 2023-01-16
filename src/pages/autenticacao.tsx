@@ -5,8 +5,7 @@ import { IconeAtencao } from '../components/icons';
 import useAuth from '../data/hook/useAuth';
 
 export default function Autenticacao() {
-
-  const {usuario, loginGoogle} = useAuth()
+  const { login, cadastrar, loginGoogle } = useAuth();
 
   const [modo, setModo] = useState<'login' | 'cadastro'>('login');
   const [email, setEmail] = useState('');
@@ -14,18 +13,20 @@ export default function Autenticacao() {
   const [erro, setErro] = useState(null);
 
   function exibirErro(msg: any, tempoEmSegundos = 8) {
-    setErro(msg)
-    setTimeout(() => setErro(null), tempoEmSegundos * 1000)
+    setErro(msg);
+    setTimeout(() => setErro(null), tempoEmSegundos * 1000);
   }
 
-  function submeter() {
-    if (modo === 'login') {
-      console.log('login');
-      exibirErro('Ocorreu um erro no login!')
-    } else {
-      console.log('cadastrar');
-      exibirErro('Ocorreu um erro no Cadastro!')
+  async function submeter() {
+    try {
+      if (modo === 'login') {
+       await login?.(email, senha) === undefined ? exibirErro('Oxe') : ''
 
+      } else {
+       await cadastrar?.(email, senha);
+      }
+    } catch(e: any) {
+      exibirErro(e?.message ?? "Erro desconhecido")
     }
   }
 
@@ -34,7 +35,7 @@ export default function Autenticacao() {
       <div className={`hidden md:block md:w-1/2 lg:w-2/3`}>
         <img
           className={`h-screen w-full object-cover`}
-          src="https://source.unsplash.com/random/?Sea&1"
+          src="https://source.unsplash.com/random/?Sky&1"
           alt="Imagem da Tela de Autenticação"
         />
       </div>
