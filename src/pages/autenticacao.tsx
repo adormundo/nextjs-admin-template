@@ -6,7 +6,7 @@ import useAuth from '../data/hook/useAuth';
 
 export default function Autenticacao() {
 
-  const {usuairo, loginGoogle} = useAuth()
+  const {usuario, loginGoogle} = useAuth()
 
   const [modo, setModo] = useState<'login' | 'cadastro'>('login');
   const [email, setEmail] = useState('');

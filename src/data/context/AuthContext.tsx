@@ -5,7 +5,7 @@ import Usuario from '../../model/Usuario';
 import { useState } from 'react';
 
 interface AuthContextProps {
-  usuairo?: Usuario;
+  usuario?: Usuario;
   loginGoogle?: () => Promise<void>;
 }
 
@@ -24,7 +24,7 @@ async function usuarioNormalizado(usuarioFirebase: any): Promise<Usuario> {
 }
 
 export function AuthProvider(props: any) {
-  const [usuairo, setUsuario] = useState<Usuario>();
+  const [usuario, setUsuario] = useState<Usuario>();
 
   async function loginGoogle() {
     const resp = await firebase
@@ -39,7 +39,7 @@ export function AuthProvider(props: any) {
   }
 
   return (
-    <AuthContext.Provider value={{ usuairo, loginGoogle }}>
+    <AuthContext.Provider value={{ usuario, loginGoogle }}>
       {props.children}
     </AuthContext.Provider>
   );
