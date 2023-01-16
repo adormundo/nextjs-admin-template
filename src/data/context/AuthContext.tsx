@@ -88,7 +88,7 @@ export function AuthProvider(props: any) {
       const cancelar = firebase.auth().onIdTokenChanged(configurarSessao);
       return () => cancelar();
     } else {
-      setCarregando(false)
+      setCarregando(false);
     }
   }, []);
 

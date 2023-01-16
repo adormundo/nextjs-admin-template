@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Head from 'next/head'
 import Router from 'next/router';
 import loading from '../../public/images/loading.gif'
 import useAuth from '../data/hook/useAuth';
@@ -8,7 +9,19 @@ export default function ForcarAutenticacao(props: any) {
   const {usuario, carregando} = useAuth()
 
   function renderizarConteudo() {
-    return <>{props.children}</>;
+    return <>
+    <Head>
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          if(!document.cookie?.includes("admin-template-cod3r-auth")) {
+            window.location.href = "/autenticacao"
+          }
+        `
+      }}>
+        
+      </script>
+    </Head>
+    {props.children}</>;
   }
 
   function renderzarCarregando() {
